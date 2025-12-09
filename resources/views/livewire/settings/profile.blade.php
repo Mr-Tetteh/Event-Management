@@ -7,7 +7,9 @@ use Illuminate\Validation\Rule;
 use Livewire\Volt\Component;
 
 new class extends Component {
-    public string $name = '';
+    public string $first_name = '';
+    public string $last_name = '';
+    public string $contact = '';
     public string $email = '';
 
     /**
@@ -15,7 +17,9 @@ new class extends Component {
      */
     public function mount(): void
     {
-        $this->name = Auth::user()->name;
+        $this->first_name = Auth::user()->first_name;
+        $this->last_name = Auth::user()->last_name;
+        $this->contact = Auth::user()->contact;
         $this->email = Auth::user()->email;
     }
 
@@ -27,7 +31,9 @@ new class extends Component {
         $user = Auth::user();
 
         $validated = $this->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'contact' => ['required', 'string', 'max:20'],
 
             'email' => [
                 'required',
@@ -72,9 +78,12 @@ new class extends Component {
 <section class="w-full">
     @include('partials.settings-heading')
 
-    <x-settings.layout :heading="__('Profile')" :subheading="__('Update your name and email address')">
+    <x-settings.layout :heading="__('Profile')" :subheading="__('Update your profile info')">
         <form wire:submit="updateProfileInformation" class="my-6 w-full space-y-6">
-            <flux:input wire:model="name" :label="__('Name')" type="text" required autofocus autocomplete="name" />
+            <flux:input wire:model="first_name" :label="__('First name')" type="text" required autofocus autocomplete="name" />
+            <flux:input wire:model="last_name" :label="__('Last name')" type="text" required autofocus autocomplete="name" />
+            <flux:input wire:model="contact" :label="__('Contact')" type="text" required autofocus autocomplete="name" />
+
 
             <div>
                 <flux:input wire:model="email" :label="__('Email')" type="email" required autocomplete="email" />

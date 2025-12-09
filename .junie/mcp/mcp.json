@@ -1,0 +1,11 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "/opt/homebrew/Cellar/php@8.2/8.2.28/bin/php",
+            "args": [
+                "/Volumes/CODE/www/laravel_projects/eventManagement/artisan",
+                "boost:mcp"
+            ]
+        }
+    }
+}

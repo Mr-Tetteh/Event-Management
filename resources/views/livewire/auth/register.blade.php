@@ -9,15 +9,28 @@
             @csrf
             <!-- Name -->
             <flux:input
-                name="name"
-                :label="__('Name')"
-                :value="old('name')"
+                name="first_name"
+                :label="__('First Name')"
+                :value="old('first_name')"
                 type="text"
-                required
-                autofocus
-                autocomplete="name"
-                :placeholder="__('Full name')"
+                placeholder="First name"
             />
+             <flux:input
+                    name="last_name"
+                    :label="__('Last Name')"
+                    :value="old('last_name')"
+                    type="text"
+                    placeholder="Last name"
+             />
+
+             <flux:input
+                name="contact"
+                :label="__('Contact')"
+                :value="old('contact')"
+                type="tel"
+                placeholder="Contact"
+            />
+
 
             <!-- Email Address -->
             <flux:input
@@ -25,7 +38,7 @@
                 :label="__('Email address')"
                 :value="old('email')"
                 type="email"
-                required
+                
                 autocomplete="email"
                 placeholder="email@example.com"
             />
@@ -35,7 +48,7 @@
                 name="password"
                 :label="__('Password')"
                 type="password"
-                required
+                
                 autocomplete="new-password"
                 :placeholder="__('Password')"
                 viewable
@@ -46,7 +59,7 @@
                 name="password_confirmation"
                 :label="__('Confirm password')"
                 type="password"
-                required
+                
                 autocomplete="new-password"
                 :placeholder="__('Confirm password')"
                 viewable

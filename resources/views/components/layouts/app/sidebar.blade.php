@@ -17,6 +17,12 @@
                 </flux:navlist.group>
             </flux:navlist>
 
+             <flux:navlist variant="outline">
+                <flux:navlist.group :heading="__('Platform')" class="grid">
+                    <flux:navlist.item icon="home" :href="route('beneficiaries')" :current="request()->routeIs('beneficiaries')" wire:navigate>{{ __('Beneficary ') }}</flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
+
             <flux:spacer />
 
             <!-- Desktop User Menu -->

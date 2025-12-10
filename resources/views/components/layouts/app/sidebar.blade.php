@@ -17,6 +17,12 @@
                 </flux:navlist.group>
             </flux:navlist>
 
+
+            @php
+              $eventType =   \App\Models\EventType::first()->event_name;
+            @endphp
+                
+            @if ($eventType == 'Funeral')
              <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Funerals')" class="grid">
                     <flux:navlist.item icon="home" :href="route('beneficiaries')" :current="request()->routeIs('beneficiaries')" wire:navigate>{{ __('Beneficiaries ') }}</flux:navlist.item>
@@ -26,12 +32,25 @@
                  <flux:navlist.item  icon="home"  :href="route('funeral-donation-cash-flow')"  :current="request()->routeIs('funeral-donation-cash-flow')"  wire:navigate >
                     {{ __('Funeral Donation Cash Flow') }}
                 </flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
+            @endif
 
+
+            @if (Auth::user()->role === 'superAdmin')
+             <flux:navlist variant="outline">
+                <flux:navlist.group :heading="__('App Management')" class="grid">
+                <flux:navlist.item  icon="home"  :href="route('event-types')"  :current="request()->routeIs('event-types')"  wire:navigate >
+                    {{ __('Event Types') }}
+                </flux:navlist.item>
                 
                 </flux:navlist.group>
             </flux:navlist>
+             @endif
 
             <flux:spacer />
+
+            
 
             <!-- Desktop User Menu -->
             <flux:dropdown class="hidden lg:block" position="bottom" align="start">

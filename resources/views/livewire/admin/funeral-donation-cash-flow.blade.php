@@ -29,7 +29,13 @@
                                 <td class="px-6 py-4">{{ $data->donor_name }}</td>
                                 <td class="px-6 py-4">{{ $data->phone ?? 'N/A' }}</td>
                                 <td class="px-6 py-4">{{ $data->amount }}</td>
-                                <td class="px-6 py-4">{{ $data->beneficiary->full_name ?? 'N/A' }}</td>
+                                <td class="px-6 py-4">
+                                    @foreach($data->beneficiaries() as $b)
+                                        <span class="px-3 py-1 space-5 bg-blue-100 text-blue-700 rounded-lg">                                   
+                                        {{ $b->full_name }}
+                                        </span>
+                                    @endforeach
+                                </td>
                                 <td class="px-6 py-4">{{ $data->created_at->diffForHumans() }}</td>
                             </tr>
                         @endforeach

@@ -10,11 +10,29 @@ class FuneralDonation extends Model
         'donor_name',
         'amount',
         'phone',
-        'beneficiary_id',
+        'beneficiary_ids'
+
     ];
 
-    public function beneficiary()
-    {
-        return $this->belongsTo(Beneficiary::class);
-    }
+
+    protected $casts = [
+        'beneficiary_ids' => 'array', // VERY IMPORTANT
+    ];
+
+
+public function beneficiaries()
+{
+    $ids = is_array($this->beneficiary_ids) 
+        ? $this->beneficiary_ids 
+        : json_decode($this->beneficiary_ids, true) ?? [];
+
+    return Beneficiary::whereIn('id', $ids)->get();
+}
+
+public function getBeneficiaryIdsAttribute($value)
+{
+    return is_array($value) ? $value : json_decode($value, true) ?? [];
+}
+
+
 }

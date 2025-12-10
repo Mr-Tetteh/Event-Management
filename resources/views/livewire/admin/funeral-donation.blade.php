@@ -34,7 +34,7 @@
 
                         <!-- Amount -->
                         <div>
-                            <label class="text-sm font-medium text-gray-700 mb-2 block">Amount</label>
+                            <label class="text-sm font-medium text-gray-700 mb-2 block">Amount <span class="text-red-500">*</span></label>
                             <input wire:model="amount" type="number" step="0.01" placeholder="Enter Amount"
                                 class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 bg-gray-50 hover:bg-white transition">
                             @error('amount')<span class="text-red-500 text-sm">{{ $message }}</span>@enderror
@@ -42,14 +42,17 @@
 
                         <!-- Beneficiary -->
                         <div>
-                            <label class="text-sm font-medium text-gray-700 mb-2 block">Beneficiary</label>
-                            <select wire:model="beneficiary_id"
+                            <label class="text-sm font-medium text-gray-700 mb-2 block">Beneficiary <span class="text-red-500">*</span> </label>
+                            <select wire:model="beneficiary_ids" multiple
                                 class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 bg-gray-50 hover:bg-white transition">
-                                <option value="">Select Beneficiary</option>
                                 @foreach($beneficiaries as $beneficiary)
                                     <option value="{{ $beneficiary->id }}">{{ $beneficiary->full_name }}</option>
                                 @endforeach
                             </select>
+                            @error('beneficiary_ids')
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
+
                             @error('beneficiary_id')<span class="text-red-500 text-sm">{{ $message }}</span>@enderror
                         </div>
 
@@ -66,7 +69,7 @@
                 <div class="bg-white rounded-xl shadow-sm p-6">
                     <div class="text-xl font-semibold text-gray-800 mb-6">Uploaded Beneficiaries</div>
                     <table class="w-full">
-                        <thead class="bg-gray-50">
+                   <thead class="bg-gray-50">
                             <tr>
                                 <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Donor Name</th>
                                 <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Contact</th>
@@ -83,7 +86,13 @@
                                 <td class="px-6 py-4 font-medium text-gray-900">{{ $data->donor_name }}</td>
                                 <td class="px-6 py-4 font-medium text-gray-900">{{ $data->phone ?? 'N/A' }}</td>
                                 <td class="px-6 py-4 font-medium text-gray-900">{{ $data->amount }}</td>
-                                <td class="px-6 py-4 font-medium text-gray-900"> {{ $data->beneficiary->full_name ?? 'N/A' }}</td>
+                                <td class="px-6 py-4 font-medium text-gray-900">
+                                    @foreach($data->beneficiaries() as $b)
+                                        <span class="px-3 py-1 space-5 bg-blue-100 text-blue-700 rounded-lg">                                   
+                                        {{ $b->full_name }}
+                                        </span>
+                                    @endforeach
+                                </td>
                                 @if (auth()->user()->role === 'superAdmin')
                                 <td class="px-6 py-4">
                                     <div class="flex space-x-3">

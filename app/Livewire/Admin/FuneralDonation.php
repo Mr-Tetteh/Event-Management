@@ -11,7 +11,7 @@ class FuneralDonation extends Component
     public $amount;
     public $phone;
     public $beneficiaries;
-    public $beneficiary_id; 
+    public $beneficiary_ids = []; 
 
     public $donation_id;
     public $Edit = false;
@@ -20,7 +20,8 @@ class FuneralDonation extends Component
         'donor_name' => 'required',
         'phone' => 'required|digits:10',
         'amount' => 'required',
-        'beneficiary_id' => 'required',
+        'beneficiary_ids' => 'required|array',
+        'beneficiary_ids.*' => 'exists:beneficiaries,id',
     ];
 
     protected $messages = [
@@ -28,7 +29,7 @@ class FuneralDonation extends Component
         'amount.required' => 'Amount is required.',
         'phone.required' => 'Phone number is required.',
         'phone.digits' => 'Phone number must be 10 digits.',
-        'beneficiary_id.required' => 'Beneficiary selection is required.',
+        'beneficiary_ids.required' => 'Beneficiary selection is required.',
     ];
 
     public function resetInputFields()
@@ -36,7 +37,7 @@ class FuneralDonation extends Component
         $this->donor_name = '';
         $this->amount = '';
         $this->phone = '';
-        $this->beneficiary_id = '';
+        $this->beneficiary_ids = [];
     }
 
     public function mount()
@@ -54,7 +55,7 @@ class FuneralDonation extends Component
             'donor_name' => $this->donor_name,
             'amount' => $this->amount,
             'phone' => $this->phone,
-            'beneficiary_id' => $this->beneficiary_id
+            'beneficiary_ids' => $this->beneficiary_ids,
         ]);
 
             $this->dispatch(event: 'toast', message: 'Funeral donation record created successfully.');
@@ -71,7 +72,8 @@ class FuneralDonation extends Component
         $this->donor_name = $donation->donor_name;
         $this->amount = $donation->amount;
         $this->phone = $donation->phone;
-        $this->beneficiary_id = $donation->beneficiary_id;
+         $this->beneficiary_ids = $donation->beneficiary_ids;
+
     }
     public function update()
     {
@@ -82,7 +84,7 @@ class FuneralDonation extends Component
             'donor_name' => $this->donor_name,
             'amount' => $this->amount,
             'phone' => $this->phone,
-            'beneficiary_id' => $this->beneficiary_id
+    'beneficiary_ids' => $this->beneficiary_ids,
         ]);
 
         $this->dispatch(event: 'toast', message: 'Funeral donation record updated successfully.');

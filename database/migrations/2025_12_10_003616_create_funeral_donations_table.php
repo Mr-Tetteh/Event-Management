@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('funeral_donations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('beneficiary_id');
-            $table->foreign('beneficiary_id')->references('id')->on('beneficiaries')->onDelete('cascade');
+            $table->json('beneficiary_ids');
             $table->string('donor_name');
             $table->decimal('amount', 10, 2);
             $table->string('phone')->nullable();

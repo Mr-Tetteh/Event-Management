@@ -18,8 +18,16 @@
             </flux:navlist>
 
              <flux:navlist variant="outline">
-                <flux:navlist.group :heading="__('Platform')" class="grid">
-                    <flux:navlist.item icon="home" :href="route('beneficiaries')" :current="request()->routeIs('beneficiaries')" wire:navigate>{{ __('Beneficary ') }}</flux:navlist.item>
+                <flux:navlist.group :heading="__('Funerals')" class="grid">
+                    <flux:navlist.item icon="home" :href="route('beneficiaries')" :current="request()->routeIs('beneficiaries')" wire:navigate>{{ __('Beneficiaries ') }}</flux:navlist.item>
+                <flux:navlist.item  icon="home"  :href="route('funeral-donations')"  :current="request()->routeIs('funeral-donations')"  wire:navigate >
+                    {{ __('Funeral Donations') }}
+                </flux:navlist.item>
+                 <flux:navlist.item  icon="home"  :href="route('funeral-donation-cash-flow')"  :current="request()->routeIs('funeral-donation-cash-flow')"  wire:navigate >
+                    {{ __('Funeral Donation Cash Flow') }}
+                </flux:navlist.item>
+
+                
                 </flux:navlist.group>
             </flux:navlist>
 

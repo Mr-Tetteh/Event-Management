@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'first_name' => 'Daniel',
             'last_name' => 'Tetteh',
-            'role' => 'suoperadmin',
+            'role' => 'superAdmin',
             'contact' => '0559724772',
             'email' => 'danielstay73@gmail.com',
             'password' => Hash::make('eventmanagement1234?'),

@@ -51,8 +51,10 @@ public function edit($id){
     $this->phone = $beneficiary->phone;
 }
 
-public function update(){
+public function update()
+{
     $this->validate();
+    
     $beneficiary = \App\Models\Beneficiary::find($this->beneficiary_id);
     $beneficiary->update([
         'full_name' => $this->full_name,

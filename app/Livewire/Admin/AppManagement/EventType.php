@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Admin\AppManagement;
 
 use Livewire\Component;
 
@@ -56,6 +56,6 @@ class EventType extends Component
     public function render()
     {
         $datas = \App\Models\EventType::all();
-        return view('livewire.admin.event-type', compact('datas'));
+        return view('livewire.admin.app-management.event-type', compact('datas'));
     }
 }

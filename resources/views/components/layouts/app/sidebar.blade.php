@@ -43,6 +43,9 @@
                 <flux:navlist.item  icon="home"  :href="route('event-types')"  :current="request()->routeIs('event-types')"  wire:navigate >
                     {{ __('Event Types') }}
                 </flux:navlist.item>
+                 <flux:navlist.item  icon="home"  :href="route('user-management')"  :current="request()->routeIs('user-management')"  wire:navigate >
+                    {{ __('User Management') }}
+                </flux:navlist.item>
                 
                 </flux:navlist.group>
             </flux:navlist>

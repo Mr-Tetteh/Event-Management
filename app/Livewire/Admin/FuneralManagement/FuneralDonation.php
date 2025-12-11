@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Admin\FuneralManagement;
 
 use App\Models\beneficiary;
 use Livewire\Component;
@@ -106,6 +106,6 @@ class FuneralDonation extends Component
     public function render()
     {
         $datas= \App\Models\FuneralDonation::latest()->paginate(10);
-        return view('livewire.admin.funeral-donation', compact('datas'));
+        return view('livewire.admin.funeral-management.funeral-donation', compact('datas'));
     }
 }

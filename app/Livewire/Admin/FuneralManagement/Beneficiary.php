@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Admin\FuneralManagement;
 
 use Livewire\Component;
 
@@ -8,8 +8,8 @@ class Beneficiary extends Component
 {
     public $Edit = false;
     public $beneficiary_id;
-  public $full_name;
-public $phone;
+    public $full_name;
+    public $phone;
 
     public function resetInputFields()
     {
@@ -74,6 +74,6 @@ public function delete($id){
     public function render()
     {
         $datas = \App\Models\Beneficiary::all();
-        return view('livewire.admin.beneficiary', compact('datas'));
+        return view('livewire.admin.funeral-management.beneficiary', compact('datas'));
     }
 }

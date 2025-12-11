@@ -17,7 +17,7 @@
                                 Name <span class="text-red-500">*</span>
                             </label>
                             <input wire:model="donor_name" type="text" placeholder="Enter Beneficiary Full Name"
-                                class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 bg-gray-50 hover:bg-white transition">
+                                class="w-full px-4 py-3 rounded-lg text-black border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 bg-gray-50 hover:bg-white transition">
                             @error('donor_name')<span class="text-red-500 text-sm">{{ $message }}</span>@enderror
                         </div>
 
@@ -28,7 +28,7 @@
                             </label>
                             <input wire:model="phone" type="tel" inputmode="tel" pattern="[0-9+\s()-]*" placeholder="Enter Contact"
                 
-                                class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 bg-gray-50 hover:bg-white transition">
+                                class="w-full px-4 py-3 rounded-lg border text-black border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 bg-gray-50 hover:bg-white transition">
                                  @error('phone')<span class="text-red-500 text-sm">{{ $message }}</span>@enderror
                             </div>
 
@@ -36,7 +36,7 @@
                         <div>
                             <label class="text-sm font-medium text-gray-700 mb-2 block">Amount <span class="text-red-500">*</span></label>
                             <input wire:model="amount" type="number" step="0.01" placeholder="Enter Amount"
-                                class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 bg-gray-50 hover:bg-white transition">
+                                class="w-full px-4 py-3 rounded-lg border text-black border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 bg-gray-50 hover:bg-white transition">
                             @error('amount')<span class="text-red-500 text-sm">{{ $message }}</span>@enderror
                         </div>
 
@@ -44,9 +44,9 @@
                         <div>
                             <label class="text-sm font-medium text-gray-700 mb-2 block">Beneficiary <span class="text-red-500">*</span> </label>
                             <select wire:model="beneficiary_ids" multiple
-                                class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 bg-gray-50 hover:bg-white transition">
+                                class="w-full px-4 py-3 rounded-lg border text-black border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 bg-gray-50 hover:bg-white transition">
                                 @foreach($beneficiaries as $beneficiary)
-                                    <option value="{{ $beneficiary->id }}">{{ $beneficiary->full_name }}</option>
+                                    <option class="text-black" value="{{ $beneficiary->id }}">{{ $beneficiary->full_name }}</option>
                                 @endforeach
                             </select>
                             @error('beneficiary_ids')

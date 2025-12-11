@@ -23,7 +23,7 @@
                             <input
                                 wire:model="full_name"
                                 type="text"
-                                class="w-full px-4 py-3 rounded-lg border border-gray-200 
+                                class="w-full px-4 py-3 rounded-lg border border-gray-200 text-black
                                        focus:border-blue-500 focus:ring-2 focus:ring-blue-200
                                        bg-gray-50 hover:bg-white transition"
                                 placeholder="Enter Beneficiary Full Name">
@@ -40,7 +40,7 @@
                             <input
                                 wire:model="phone"
                                 type="tel"
-                                class="w-full px-4 py-3 rounded-lg border border-gray-200 
+                                class="w-full px-4 py-3 rounded-lg border border-gray-200 text-black
                                        focus:border-blue-500 focus:ring-2 focus:ring-blue-200
                                        bg-gray-50 hover:bg-white transition"
                                 placeholder="Enter Beneficiary contact">

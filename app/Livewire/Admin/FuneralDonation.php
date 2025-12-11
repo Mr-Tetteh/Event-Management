@@ -54,9 +54,12 @@ class FuneralDonation extends Component
         \App\Models\FuneralDonation::create([
             'donor_name' => $this->donor_name,
             'amount' => $this->amount,
-            'phone' => $this->phone,
+            'phone' =>  '233' . substr($this->phone, -9),
             'beneficiary_ids' => $this->beneficiary_ids,
         ]);
+
+         sendWithSMSONLINEGH('233' . substr($this->phone, -9), "Dear {$this->donor_name}, thank you for your generous donation of GHS {$this->amount} to support our funeral services. Your contribution is greatly appreciated. - " . config('app.name'));
+         sendWithSMSONLINEGH('233' . substr($this->phone, -9), "Experience seamless event management with Novex Technologies. Book this system for funerals, weddings & birthdays. Call/WhatsApp 0559724772.");
 
             $this->dispatch(event: 'toast', message: 'Funeral donation record created successfully.');
 

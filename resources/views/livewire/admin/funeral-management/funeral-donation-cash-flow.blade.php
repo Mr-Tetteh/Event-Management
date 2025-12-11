@@ -36,7 +36,7 @@
                                         </span>
                                     @endforeach
                                 </td>
-                                <td class="px-6 py-4">{{ $data->created_at->diffForHumans() }}</td>
+                                <td class="px-6 py-4 text-black">{{ $data->created_at->diffForHumans() }}</td>
                             </tr>
                         @endforeach
                     </tbody>

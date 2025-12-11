@@ -1,7 +1,7 @@
 <div class="lg:col-span-7 w-full overflow-x-auto">
     <div class="bg-white rounded-xl shadow-sm p-6">
 
-        <div class="text-xl font-semibold text-gray-800 mb-6">
+        <div class="text-xl font-semibold text-black mb-6">
             Daily Funeral Donation Summary
         </div>
 
@@ -15,21 +15,21 @@
                 <table class="w-full mb-2">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Donor Name</th>
-                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Contact</th>
-                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Amount</th>
-                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Beneficiary</th>
-                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Created At</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-black">Donor Name</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-black">Contact</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-black">Amount</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-black">Beneficiary</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-black">Created At</th>
                         </tr>
                     </thead>
 
                     <tbody class="divide-y divide-gray-100">
                         @foreach($records as $data)
                             <tr class="hover:bg-gray-50 transition">
-                                <td class="px-6 py-4">{{ $data->donor_name }}</td>
-                                <td class="px-6 py-4">{{ $data->phone ?? 'N/A' }}</td>
-                                <td class="px-6 py-4">{{ $data->amount }}</td>
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-4 text-black">{{ $data->donor_name }}</td>
+                                <td class="px-6 py-4 text-black">{{ $data->phone ?? 'N/A' }}</td>
+                                <td class="px-6 py-4 text-black">{{ $data->amount }}</td>
+                                <td class="px-6 py-4 text-black">
                                     @foreach($data->beneficiaries() as $b)
                                         <span class="px-3 py-1 space-5 bg-blue-100 text-blue-700 rounded-lg">                                   
                                         {{ $b->full_name }}

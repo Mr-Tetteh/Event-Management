@@ -6,10 +6,14 @@ use Livewire\Volt\Volt;
 
 Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::get('beneficiaries', \App\Livewire\Admin\Beneficiary::class)->name('beneficiaries');
-        Route::get('funeral-donations', \App\Livewire\Admin\FuneralDonation::class)->name('funeral-donations');
-        Route::get('funeral-donation-cash-flow', \App\Livewire\Admin\FuneralDonationCashFlow::class)->name('funeral-donation-cash-flow');
-        Route::get('event-types', \App\Livewire\Admin\EventType::class)->name('event-types')->middleware(\App\Http\Middleware\EnsureTokenIsSuperAdmin::class);
+        Route::get('beneficiaries', App\Livewire\Admin\FuneralManagement\Beneficiary::class)->name('beneficiaries');
+        Route::get('funeral-donations', \App\Livewire\Admin\FuneralManagement\FuneralDonation::class)->name('funeral-donations');
+        Route::get('funeral-donation-cash-flow', \App\Livewire\Admin\FuneralManagement\FuneralDonationCashFlow::class)->name('funeral-donation-cash-flow');
+
+
+        Route::get('event-types', \App\Livewire\Admin\AppManagement\EventType::class)->name('event-types')->middleware(\App\Http\Middleware\EnsureTokenIsSuperAdmin::class);
+        Route::get('user-management', \App\Livewire\Admin\AppManagement\UserManagement::class)->name('user-management')->middleware(\App\Http\Middleware\EnsureTokenIsSuperAdmin::class);
+
     });
 
 
@@ -24,3 +28,4 @@ Route::middleware(['auth'])->group(function () {
 
 
 });
+// /Volumes/CODE/www/laravel_projects/eventManagement/app/Livewire/Admin/FuneralManagement/Beneficiary.php

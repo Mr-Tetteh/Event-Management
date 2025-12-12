@@ -18,15 +18,14 @@ class Beneficiary extends Component
     }
     
 
-   protected $rules = [
-    'full_name' => 'required',
-    'phone' => 'digits:10',
+protected $rules = [
+ 'full_name' => 'required',
+ 'phone' => 'nullable|digits:10',
 ];
-    protected $messages = [
-        'full_name.required' => 'Beneficiary full name is required.',
-        'phone.min' => 'Contact number must be 10 digits.',
-        'phone.max' => 'Contact number must be 10 digits.',
-    ];
+ protected $messages = [
+      'full_name.required' => 'Beneficiary full name is required.',
+      'phone.digits' => 'Contact number must be 10 digits.',
+ ];
 
  public function create()
 {

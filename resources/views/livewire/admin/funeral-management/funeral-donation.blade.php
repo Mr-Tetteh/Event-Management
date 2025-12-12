@@ -43,19 +43,27 @@
                         <!-- Beneficiary -->
                         <div>
                             <label class="text-sm font-medium text-gray-700 mb-2 block">Beneficiary <span class="text-red-500">*</span> </label>
-                            <select wire:model="beneficiary_ids" multiple
-                                class="w-full px-4 py-3 rounded-lg border text-black border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 bg-gray-50 hover:bg-white transition">
-                                @foreach($beneficiaries as $beneficiary)
-                                    <option class="text-black" value="{{ $beneficiary->id }}">{{ $beneficiary->full_name }}</option>
-                                @endforeach
-                            </select>
-                            @error('beneficiary_ids')
+                           
+
+
+                            <!-- Dropdown menu -->
+                            <div id="dropdownSearch" class="z-10 bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-60 block w-full px-4 py-3 rounded-lg border ">
+                                <ul class="h-48 select-none overflow-y-auto p-2 text-sm text-body font-medium w-full px-4 py-3 rounded-lg border" aria-labelledby="dropdownSearchButton">
+                                 @foreach($beneficiaries as $beneficiary)
+
+                                    <li>
+                                    <div class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded-md">
+                                    <input wire:model="beneficiary_ids" id="{{ $beneficiary->id }}1" type="checkbox" value="{{ $beneficiary->id }}" class="w-4 h-4 border border-default-strong rounded-xs bg-neutral-secondary-strong focus:ring-2 focus:ring-brand-soft">
+                                    <label for="{{ $beneficiary->id }}" class="w-full ms-2 text-sm font-medium text-heading">{{ $beneficiary->full_name }}</label>
+                                    </div>
+                                </li>
+                                 @endforeach
+                                </ul>
+                                @error('beneficiary_ids')
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
-                            @enderror
-
-                            @error('beneficiary_id')<span class="text-red-500 text-sm">{{ $message }}</span>@enderror
-                        </div>
-
+                            @enderror                              
+                            </div>
+                        </div>                       
                         <button type="submit"
                             class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition flex items-center justify-center gap-2">
                             {{ $Edit ? 'Update Beneficiary Details' : 'Upload Beneficiary Details' }}

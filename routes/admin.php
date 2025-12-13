@@ -14,6 +14,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('event-types', \App\Livewire\Admin\AppManagement\EventType::class)->name('event-types')->middleware(\App\Http\Middleware\EnsureTokenIsSuperAdmin::class);
         Route::get('user-management', \App\Livewire\Admin\AppManagement\UserManagement::class)->name('user-management')->middleware(\App\Http\Middleware\EnsureTokenIsSuperAdmin::class);
 
+        Route::get('brochure', \App\Livewire\Admin\GeneralPurpose\Brochure::class)->name('brochure');
+
     });
 
 

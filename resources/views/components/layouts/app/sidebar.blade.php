@@ -46,7 +46,7 @@
             @if ($eventType == 'Funeral')
              <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Wedding')" class="grid">
-                    <flux:navlist.item icon="home" :href="route('beneficiaries')" :current="request()->routeIs('beneficiaries')" wire:navigate>{{ __('Beneficiaries ') }}</flux:navlist.item>
+                    <flux:navlist.item icon="home" :href="route('wedding-beneficiaries')" :current="request()->routeIs('wedding-beneficiaries')" wire:navigate>{{ __('Wedding Beneficiaries') }}</flux:navlist.item>
                 <flux:navlist.item  icon="home"  :href="route('funeral-donations')"  :current="request()->routeIs('funeral-donations')"  wire:navigate >
                     {{ __('Wedding Donations') }}
                 </flux:navlist.item>
